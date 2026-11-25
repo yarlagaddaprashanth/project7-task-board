@@ -17,7 +17,7 @@ if db_host:
     password = quote_plus(os.environ.get("DB_PASSWORD", ""))
     name = os.environ.get("DB_NAME", "postgres")
     app.config["SQLALCHEMY_DATABASE_URI"] = (
-        f"postgresql://{user}:{password}@{db_host}:5432/{name}"
+               f"postgresql+psycopg2://{user}:{password}@{db_host}:5432/{name}"
     )
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
