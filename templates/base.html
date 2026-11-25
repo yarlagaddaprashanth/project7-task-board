@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Task Board</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+    nav { background: #232f3e; padding: 12px 20px; }
+    nav a { color: white; margin-right: 16px; text-decoration: none; }
+    main { max-width: 600px; margin: 30px auto; background: white; padding: 20px 30px; border-radius: 8px; }
+    .add { display: flex; gap: 8px; margin-bottom: 20px; }
+    .add input { flex: 1; padding: 8px; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
+    li span { flex: 1; }
+    li.done span { text-decoration: line-through; color: #999; }
+    button { padding: 6px 12px; cursor: pointer; background: #ff9900; border: none; border-radius: 4px; }
+    button.delete { background: #ddd; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}">Tasks</a>
+    <a href="{{ url_for('about') }}">About</a>
+  </nav>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

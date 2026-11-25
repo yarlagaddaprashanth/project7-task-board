@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My Task Board</h1>
+
+<form action="{{ url_for('add') }}" method="post" class="add">
+  <input name="title" placeholder="What do you need to do?" required>
+  <button>Add</button>
+</form>
+
+<ul>
+  {% for task in tasks %}
+  <li class="{{ 'done' if task.done }}">
+    <span>{{ task.title }}</span>
+    <form action="{{ url_for('toggle_done', task_id=task.id) }}" method="post">
+      <button>{{ 'Undo' if task.done else 'Done' }}</button>
+    </form>
+    <form action="{{ url_for('delete', task_id=task.id) }}" method="post">
+      <button class="delete">Delete</button>
+    </form>
+  </li>
+  {% else %}
+  <li>No tasks yet. Add one above!</li>
+  {% endfor %}
+</ul>
+{% endblock %}
